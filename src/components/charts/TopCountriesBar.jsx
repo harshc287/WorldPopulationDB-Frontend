@@ -22,7 +22,7 @@ export default function TopCountriesBar({ continent }) {
   if (error) return <p className="text-red-500">Error loading top countries</p>;
 
   return (
-    <div className="p-5 rounded-xl shadow bg-white">
+    <div className="p-5  rounded-xl shadow bg-white">
       <h2 className="text-lg font-semibold mb-3">
         Top Countries {continent ? `in ${continent}` : ""}
       </h2>
@@ -35,7 +35,10 @@ export default function TopCountriesBar({ continent }) {
           <ResponsiveContainer>
             <BarChart data={countries}>
               <XAxis dataKey="Name" />
-              <YAxis />
+              <YAxis
+                width={100}
+                tickFormatter={(value) => value.toLocaleString()}
+              />
               <Tooltip formatter={(value) => value.toLocaleString()} />
               <Bar dataKey="Population" fill="#4F46E5" />
             </BarChart>
